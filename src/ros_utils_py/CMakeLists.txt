@@ -10,11 +10,6 @@ catkin_python_setup()
 
 catkin_package()
 
-include_directories(
-# include
-  ${catkin_INCLUDE_DIRS}
-)
-
 catkin_install_python(PROGRAMS
   test/publisher_test_node.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
