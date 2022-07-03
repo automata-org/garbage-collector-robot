@@ -1,3 +1,6 @@
+#top level cmake
+src/CMakeLists.txt
+.catkin_workspace
 devel/
 logs/
 build/
