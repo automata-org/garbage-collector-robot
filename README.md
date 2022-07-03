@@ -2,7 +2,7 @@
 Project developed by students from Master in Robotics and AI by Experis Academy - Class June 2022
 
 
-## Usage guide - Run examples
+## Usage guide
 
 The whole repository is meant to be used as catkin_ws
 
