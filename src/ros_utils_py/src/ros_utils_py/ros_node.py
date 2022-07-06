@@ -28,14 +28,3 @@ class GenericROSNode:
         except:
             rospy.logerr("cannot find publisher for topic: ", topic_name)
             raise ValueError("publisher does not exist")
-
-class Talker(GenericROSNode):
-    def __init__(self, name):
-        super().__init__(name)
-    def main_task(self):
-        self.get_publisher('chatter').publish("Blip!")
-
-class Listener(GenericROSNode):
-    def __init__(self, name):
-        super().__init__(name)
-    
