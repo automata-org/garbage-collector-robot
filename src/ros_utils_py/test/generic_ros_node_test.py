@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 from __future__ import print_function
-import ros_utils_py.ros_node as node
 import rospy
+import ros_utils_py.ros_node as node
 from std_msgs.msg import String
 from std_srvs.srv import Trigger, TriggerResponse
 
 def main():
 
-    class Talker(GenericROSNode):
+    class Talker(node.GenericROSNode):
         def __init__(self, name):
             super().__init__(name)
         def main_task(self):
