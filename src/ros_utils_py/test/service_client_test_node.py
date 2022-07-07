@@ -10,5 +10,5 @@ def main():
     print("Service Talker ->", res1.message)   
 
 
-if __name__ == "__main__":s
+if __name__ == "__main__":
     main()
