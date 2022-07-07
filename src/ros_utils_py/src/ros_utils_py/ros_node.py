@@ -28,3 +28,10 @@ class GenericROSNode:
         except:
             rospy.logerr("cannot find publisher for topic: ", topic_name)
             raise ValueError("publisher does not exist")
+    def get_subscriber(self,topic_name):
+        try:
+            sub=self.subscribers[topic_name]
+            return sub
+        except:
+            rospy.logerr("cannot find subscriber for topic: ", topic_name)
+            raise ValueError("subscriber does not exist")
