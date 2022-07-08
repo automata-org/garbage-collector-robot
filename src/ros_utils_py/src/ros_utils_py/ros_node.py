@@ -1,12 +1,14 @@
 #!/usr/bin/env python
-import rospy
 from std_msgs.msg import String
+from std_srvs.srv import Trigger
+import rospy
 
 class GenericROSNode:
     def __init__(self, name):
         self.node=rospy.init_node(name, anonymous=True)
         self.publishers={}
         self.subscribers={}
+        self.services={}
     def main_task(self):
         pass
     def run(self,rate_hz):
@@ -21,6 +23,9 @@ class GenericROSNode:
         self.publishers[topic_name]=rospy.Publisher(topic_name, data_type, queue_size=1)
     def add_subscriber(self, topic_name, data_type,callback):
         self.subscribers[topic_name]=rospy.Subscriber(topic_name, data_type, callback)
+    def add_service(self, service_name, Trigger, callback):
+        self.services[service_name]=rospy.Service(service_name, Trigger, callback)
+
     def get_publisher(self,topic_name):
         try:
             pub=self.publishers[topic_name]
@@ -35,3 +40,12 @@ class GenericROSNode:
         except:
             rospy.logerr("cannot find subscriber for topic: ", topic_name)
             raise ValueError("subscriber does not exist")
+    def get_service(self, service_name):
+        try:
+            service=self.services[service_name]
+            return service
+        except:
+            rospy.logerr("cannot find service for service name: ", service_name)
+            raise ValueError("service does not exist")
+
+
