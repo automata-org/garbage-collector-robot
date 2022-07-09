@@ -12,7 +12,7 @@ catkin_package()
 
 catkin_install_python(PROGRAMS
   test/publisher_test_node.py
-  #test/generic_ros_node_test.py to run a node from catkin workspace is first necessary to export it
+  test/generic_ros_node_test.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
