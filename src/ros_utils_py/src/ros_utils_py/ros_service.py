@@ -1,8 +1,8 @@
-from __future__ import print_function
+from __future__ import print_function #why?
 
-import sys
+import sys #why?
 import rospy
-from std_srvs.srv import Trigger
+from std_srvs.srv import Trigger #why?
 
 class GenericServiceClient:
     def __init__(self, service_name, data_type):

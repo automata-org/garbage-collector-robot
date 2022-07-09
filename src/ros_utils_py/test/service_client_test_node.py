@@ -5,6 +5,7 @@ from std_srvs.srv import Trigger
 
 
 def main():
+    #ROS nodes must be initialized rospy.init_node....
     client = ServiceClient.GenericServiceClient("talk_service", Trigger)
     res1 = client.request()
     print("Service Talker ->", res1.message)   
