@@ -1,4 +1,3 @@
-
 import rospy
 
 
@@ -16,3 +15,8 @@ class GenericServiceClient:
             return response
         except rospy.ServiceException as e:
              print("service call failed")
+
+class GenericServiceServer:
+
+    def __init__ (self, topic_name, data_type, callback):
+        self.serviceserver = rospy.Service(topic_name, data_type, callback)
