@@ -7,6 +7,7 @@ class GenericROSNode:
         self.publishers={}
         self.subscribers={}
         self.services={}
+        self.clients={}
     def main_task(self):
         pass
     def run(self,rate_hz):
@@ -22,7 +23,7 @@ class GenericROSNode:
     def add_subscriber(self, topic_name, data_type,callback):
         self.subscribers[topic_name]=rospy.Subscriber(topic_name, data_type, callback)
     def add_service_client(self, service_name, data_type):
-        self.subscribers[service_name]=rospy.ServiceProxy(service_name, data_type)
+        self.clients[service_name]=rospy.ServiceProxy(service_name, data_type)
     def add_service_server(self, service_name, data_type, callback):
         self.services[service_name]=rospy.Service(service_name, data_type, callback)
 
@@ -40,12 +41,19 @@ class GenericROSNode:
         except:
             rospy.logerr("cannot find subscriber for topic: ", topic_name)
             raise ValueError("subscriber does not exist")
-    def get_service(self, service_name):
+    def get_service_server(self, service_name):
         try:
-            service=self.services[service_name]
-            return service
+            service_server=self.services[service_name]
+            return service_server
         except:
             rospy.logerr("cannot find service for service name: ", service_name)
             raise ValueError("service does not exist")
+    def get_client(self, service_name):
+        try:
+            client=self.clients[service_name]
+            return client
+        except:
+            rospy.logerr("cannot find client for service name: ", service_name)
+            raise ValueError("client does not exist")
 
 
