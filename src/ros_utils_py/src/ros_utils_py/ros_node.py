@@ -1,6 +1,4 @@
 #!/usr/bin/env python
-from std_msgs.msg import String#why?
-from std_srvs.srv import Trigger#why?
 import rospy
 
 class GenericROSNode:
