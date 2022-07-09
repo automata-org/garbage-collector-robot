@@ -12,6 +12,7 @@ catkin_package()
 
 catkin_install_python(PROGRAMS
   test/publisher_test_node.py
+  test/generic_ros_node_test.py
   test/service_client_test_node.py
   test/subscriber_test_node.py
   test/service_test_node.py
