@@ -1,4 +1,3 @@
-from __future__ import print_function
 from std_srvs.srv import Trigger, TriggerResponse
 import rospy
 import ros_utils_py.ros_service as Service
