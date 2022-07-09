@@ -21,8 +21,10 @@ class GenericROSNode:
         self.publishers[topic_name]=rospy.Publisher(topic_name, data_type, queue_size=1)
     def add_subscriber(self, topic_name, data_type,callback):
         self.subscribers[topic_name]=rospy.Subscriber(topic_name, data_type, callback)
-    def add_service(self, service_name, Trigger, callback):
-        self.services[service_name]=rospy.Service(service_name, Trigger, callback)
+    def add_service_client(self, service_name, data_type):
+        self.subscribers[service_name]=rospy.ServiceProxy(service_name, data_type)
+    def add_service_server(self, service_name, data_type, callback):
+        self.services[service_name]=rospy.Service(service_name, data_type, callback)
 
     def get_publisher(self,topic_name):
         try:
