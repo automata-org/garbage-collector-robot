@@ -12,7 +12,7 @@ class State(Enum):
 class AbstractActivityManager(rosnode.GenericROSNode):
     def __init__(self, name):
         super().__init__(name)
-        self.rosnode(name)
+        #self.rosnode(name) #why?
         self.state = State.NONE
 
     def _do_idle (self):

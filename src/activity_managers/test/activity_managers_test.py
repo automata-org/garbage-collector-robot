@@ -2,7 +2,6 @@ import activity_managers.abstract_activity_manager as Manager
 from std_msgs.msg import String
 import rospy
 from std_srvs.srv import Trigger, TriggerResponse
-import ros_utils_py.ros_node as node
 
 class StateTester(Manager.AbstractActivityManager):
     def __init__(self, name):

@@ -11,6 +11,6 @@ catkin_python_setup()
 catkin_package()
 
 catkin_install_python(PROGRAMS
-  activity_managers/ros_activity_manager.py
+  test/activity_managers_test.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
