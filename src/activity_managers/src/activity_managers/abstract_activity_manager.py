@@ -28,15 +28,15 @@ class AbstractActivityManager(rosnode.GenericROSNode):
 
     def main_task(self):
         if self.state == State.IDLE:
-            _do_idle()
+            self._do_idle()
         elif self.state == State.RUNNING:
-            _do_running()
+            self._do_running()
         elif self.state == State.DONE:
-            _do_done()
+            self._do_done()
         elif self.state == State.ERROR:
-            _do_error()
+            self._do_error()
         elif self.state == State.NONE:
-            _do_none()
+            self._do_none()
         else:
             pass
             

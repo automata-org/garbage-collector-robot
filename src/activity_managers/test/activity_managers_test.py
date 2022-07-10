@@ -9,26 +9,26 @@ class StateTester(Manager.AbstractActivityManager):
     def _do_idle (self):
         print("IDLE")
         old_state=self.state
-        self.state= State.RUNNING
+        self.state= Manager.State.RUNNING
         return old_state
     def _do_running (self):
         print("RUNNING")
         old_state=self.state
-        self.state= State.DONE
+        self.state= Manager.State.DONE
         return old_state
     def _do_done (self):
         print("DONE")
         old_state=self.state
-        self.state= State.IDLE
+        self.state= Manager.State.IDLE
         return old_state
     def _do_error (self):
         print("ERROR")
         old_state=self.state
         return old_state
-    def _do_none (self):
+    def _do_none(self):
         print("INITIALIZED MANAGER")
         old_state=self.state
-        self.state= State.IDLE
+        self.state= Manager.State.IDLE
     
 def main():
     manager=StateTester('statetest')
