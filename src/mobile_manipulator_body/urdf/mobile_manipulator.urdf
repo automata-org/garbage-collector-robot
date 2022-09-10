@@ -418,6 +418,104 @@
     </collision>
   </link>
 
+<link 
+  name="hand_link">
+  <collision>
+    <origin xyz="0.00 0.00 0.00" rpy="0.00 0.00 0.00"/>
+    <geometry>
+      <mesh filename="package://mobile_manipulator_body/meshes/RG2_Hand_col.STL"/>
+    </geometry>
+  </collision>
+  <visual>
+    <origin xyz="0.00 0.00 0.00" rpy="0.00 0.00 0.00"/>
+    <geometry>
+       <mesh filename="package://mobile_manipulator_body/meshes/RG2_Hand_vis.STL"/>
+    </geometry>
+  </visual>
+      <!-- <inertial>
+          <origin xyz="0.058091 0.000192 -0.000016" rpy="0.00 0.00 0.00"/>
+          <mass value="0.524520"/>
+          <inertia ixx="0.000193" ixy="0.000000" ixz="0.000000"
+                   iyy="0.000564" iyz="-0.000001"
+                   izz="0.000636" />
+      </inertial> -->
+  <inertial>
+    <origin xyz="0.061902 0.000129 -0.000005" rpy="0.00 0.00 0.00"/>
+    <mass value="1.684558"/>
+    <inertia  ixx="0.000862" ixy="0.000000" ixz="0.000000"
+              iyy="0.002401" iyz="-0.000001"
+              izz="0.002620" />
+  </inertial>
+  </link>
+<link 
+  name="l_moment_arm_link">
+  <collision>
+    <origin xyz="0.00 0.00 0.00" rpy="0.00 0.00 0.00"/>
+    <geometry>
+      <mesh filename="package://mobile_manipulator_body/meshes/RG2_LeftMomentArm_col.STL"/>
+    </geometry>
+  </collision>
+  <visual>
+    <origin xyz="0.00 0.00 0.00" rpy="0.00 0.00 0.00"/>
+    <geometry>
+      <mesh filename="package://mobile_manipulator_body/meshes/RG2_LeftMomentArm_vis.STL"/>
+    </geometry>
+  </visual>
+  <inertial>
+    <origin xyz="0.017004 0.006397 -0.010300" rpy="0.00 0.00 0.00"/>
+    <mass value="0.160209"/>
+    <inertia ixx="0.000023" ixy="0.000019" ixz="0.000000"
+              iyy="0.000072" iyz="0.000000"
+              izz="0.000083" />
+  </inertial>
+</link>
+
+<link 
+  name="l_finger_link">
+  <collision>
+    <origin xyz="0.00 0.00 0.00" rpy="0.00 0.00 0.00"/>
+    <geometry>
+      <mesh filename="package://mobile_manipulator_body/meshes/RG2_LeftFinger_col.STL"/>
+    </geometry>
+  </collision>
+  <visual>
+    <origin xyz="0.00 0.00 0.00" rpy="0.00 0.00 0.00"/>
+    <geometry>
+      <mesh filename="package://mobile_manipulator_body/meshes/RG2_LeftFinger_vis.STL"/>
+    </geometry>
+  </visual>
+  <inertial>
+    <origin xyz="0.024695 -0.010178 -0.010001" rpy="0.00 0.00 0.00"/>
+    <mass value="0.081638"/>
+    <inertia ixx="0.000006" ixy="-0.000005" ixz="0.000000"
+              iyy="0.000025" iyz="0.000000"
+              izz="0.000026" />
+  </inertial>
+</link>
+
+<link 
+  name="l_truss_arm_link">
+  <collision>
+    <origin xyz="0.00 0.00 0.00" rpy="0.00 0.00 0.00"/>
+    <geometry>
+      <mesh filename="package://mobile_manipulator_body/meshes/RG2_LeftTrussArm_col.STL"/>
+    </geometry>
+  </collision>
+  <visual>
+    <origin xyz="0.00 0.00 0.00" rpy="0.00 0.00 0.00"/>
+    <geometry>
+      <mesh filename="package://mobile_manipulator_body/meshes/RG2_LeftTrussArm_vis.STL"/>
+    </geometry>
+  </visual>
+  <inertial>
+    <origin xyz="0.023075 0.012136 -0.010000" rpy="0.00 0.00 0.00"/>
+    <mass value="0.065927"/>
+    <inertia ixx="0.000010" ixy="0.000010" ixz="0.000000"
+              iyy="0.000024" iyz="0.000000"
+              izz="0.000025" />
+  </inertial>
+</link>
+
 <joint name="arm_base_joint" type="continuous">
   <axis xyz="0 0 1"/>
   <parent link="base_link"/>
@@ -451,6 +549,47 @@
   <parent link="elbow"/>
   <child link="top_wrist"/>
   <origin rpy="0 0 0" xyz="0.0 0 0.20994"/>
+</joint>
+
+<joint name="hand_wrist_joint" type="continuous">
+  <parent link="top_wrist"/>
+  <child link="hand_link"/>
+  <origin xyz="0.000 0.000 0.135" rpy="0 -1.57 0"/>
+</joint>
+
+<joint name="gripper_joint" type="revolute">
+  <parent link="hand_link"/>
+  <child link="l_moment_arm_link"/>
+  <origin xyz="0.105 0.017 0.010" rpy="0 0 0"/>
+  <axis xyz="0 0 1"/>
+  <limit velocity="3.14" effort="10.6" lower="-0.45" upper="1.57" />
+  <!-- <limit velocity="3.14" effort="100" lower="-3" upper="3" /> -->
+  <dynamics damping="0.1" friction="0.0" />
+  <implicitSpringDamper>True</implicitSpringDamper>
+</joint>
+
+<joint name="l_finger_2_joint" type="revolute">
+  <parent link="l_moment_arm_link"/>
+  <child link="l_finger_link"/>
+  <origin xyz="0.049 0.026 0.000" rpy="0 0 0"/>
+  <axis xyz="0 0 1"/>
+  <limit velocity="3.14" effort="10.6" lower="-1.57" upper="1.57" />
+  <!-- <limit velocity="3.14" effort="100" lower="-3" upper="3" /> -->
+  <mimic joint="gripper_joint" multiplier="-1"/>
+  <dynamics damping="0.1" friction="0.0" />
+  <implicitSpringDamper>True</implicitSpringDamper>
+</joint>
+
+<joint name="l_finger_passive_joint" type="revolute">
+  <parent link="hand_link"/>
+  <child link="l_truss_arm_link"/>
+  <origin xyz="0.122 0.008 0.010" rpy="0 0 0"/>
+  <axis xyz="0 0 1"/>
+  <limit velocity="3.14" effort="10.6" lower="-1.57" upper="1.57" />
+  <!-- <limit velocity="3.14" effort="100" lower="-3" upper="3" /> -->
+  <mimic joint="gripper_joint" multiplier="1"/>
+  <dynamics damping="0.1" friction="0.0" />
+  <implicitSpringDamper>True</implicitSpringDamper>
 </joint>
 
 
@@ -554,6 +693,8 @@
   </joint>
 </transmission>
 
+<!--############################## GRIPPER ########################################-->
+    
 <!--######################################################################-->
 <gazebo>
     <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
