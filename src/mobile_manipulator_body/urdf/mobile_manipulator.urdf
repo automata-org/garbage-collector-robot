@@ -837,6 +837,74 @@
   </joint>
 </transmission>
 
+<!--######## GRIPPER TRANSMISSION  ##########-->
+
+<transmission name="gripper_joint_trans" type="SimpleTransmission">
+  <type>transmission_interface/SimpleTransmission</type>
+  <actuator name="gripper_motor">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  <joint name="gripper_joint">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<transmission name="l_finger_2_joint_trans" type="SimpleTransmission">
+  <type>transmission_interface/SimpleTransmission</type>
+  <actuator name="l_finger_2_motor">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  <joint name="l_finger_2_joint">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<transmission name="l_finger_passive_joint_trans" type="SimpleTransmission">
+  <type>transmission_interface/SimpleTransmission</type>
+  <actuator name="l_finger_passive_motor">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  <joint name="l_finger_passive_joint">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<transmission name="r_finger_1_joint_trans" type="SimpleTransmission">
+  <type>transmission_interface/SimpleTransmission</type>
+  <actuator name="r_finger_1_motor">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  <joint name="r_finger_1_joint">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+
+<transmission name="r_finger_2_joint_trans" type="SimpleTransmission">
+  <type>transmission_interface/SimpleTransmission</type>
+  <actuator name="r_finger_2_motor">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  <joint name="r_finger_2_joint">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
+
+<transmission name="r_finger_passive_joint_trans" type="SimpleTransmission">
+  <type>transmission_interface/SimpleTransmission</type>
+  <actuator name="r_finger_passive_motor">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  <joint name="r_finger_passive_joint">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+</transmission>
 
 <!--######################################################################-->
 <gazebo>
