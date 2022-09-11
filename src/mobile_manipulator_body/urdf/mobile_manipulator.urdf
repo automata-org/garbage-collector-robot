@@ -635,7 +635,7 @@
   <child link="l_moment_arm_link"/>
   <origin xyz="0.105 0.017 0.010" rpy="0 0 0"/>
   <axis xyz="0 0 1"/>
-  <limit velocity="3.14" effort="10.6" lower="-0.45" upper="1.57" />
+  <limit velocity="3.14" effort="10.6" lower="-0.523" upper="0.523" />
   <!-- <limit velocity="3.14" effort="100" lower="-3" upper="3" /> -->
   <dynamics damping="0.1" friction="0.0" />
   <implicitSpringDamper>True</implicitSpringDamper>
@@ -647,7 +647,7 @@
   <child link="l_finger_link"/>
   <origin xyz="0.049 0.026 0.000" rpy="0 0 0"/>
   <axis xyz="0 0 1"/>
-  <limit velocity="3.14" effort="10.6" lower="-1.57" upper="1.57" />
+  <limit velocity="3.14" effort="10.6" lower="-0.523" upper="0.523" />
   <!-- <limit velocity="3.14" effort="100" lower="-3" upper="3" /> -->
   <mimic joint="gripper_joint" multiplier="-1"/>
   <dynamics damping="0.1" friction="0.0" />
@@ -666,7 +666,7 @@
   <child link="l_truss_arm_link"/>
   <origin xyz="0.122 0.008 0.010" rpy="0 0 0"/>
   <axis xyz="0 0 1"/>
-  <limit velocity="3.14" effort="10.6" lower="-1.57" upper="1.57" />
+  <limit velocity="3.14" effort="10.6" lower="-0.523" upper="0.523" />
   <!-- <limit velocity="3.14" effort="100" lower="-3" upper="3" /> -->
   <mimic joint="gripper_joint" multiplier="1"/>
   <dynamics damping="0.1" friction="0.0" />
@@ -685,7 +685,7 @@
   <child link="r_moment_arm_link"/>
   <origin xyz="0.105 -0.017 0.010" rpy="0 0 0"/>
   <axis xyz="0 0 1"/>
-  <limit velocity="3.14" effort="10.6" lower="-1.57" upper="1.57" />
+  <limit velocity="3.14" effort="10.6" lower="-0.523" upper="0.523" />
   <!-- <limit velocity="3.14" effort="100" lower="-3" upper="3" /> -->
   <mimic joint="gripper_joint" multiplier="-1"/>
   <dynamics damping="0.1" friction="0.0" />
@@ -704,7 +704,7 @@
   <child link="r_finger_link"/>
   <origin xyz="0.049 -0.026 0.000" rpy="0 0 0"/>
   <axis xyz="0 0 1"/>
-  <limit velocity="3.14" effort="10.6" lower="-1.57" upper="1.57" />
+  <limit velocity="3.14" effort="10.6" lower="-0.523" upper="0.523" />
   <!-- <limit velocity="3.14" effort="100" lower="-3" upper="3" /> -->
   <mimic joint="gripper_joint" multiplier="1"/>
   <dynamics damping="0.1" friction="0.0" />
@@ -723,7 +723,7 @@
   <child link="r_truss_arm_link"/>
   <origin xyz="0.122 -0.008 0.010" rpy="0 0 0"/>
   <axis xyz="0 0 1"/>
-  <limit velocity="3.14" effort="10.6" lower="-1.57" upper="1.57" />
+  <limit velocity="3.14" effort="10.6" lower="-0.523" upper="0.523" />
   <!-- <limit velocity="3.14" effort="100" lower="-3" upper="3" /> -->
   <mimic joint="gripper_joint" multiplier="-1"/>
   <dynamics damping="0.1" friction="0.0" />
@@ -839,69 +839,13 @@
 
 <!--######## GRIPPER TRANSMISSION  ##########-->
 
-<transmission name="gripper_joint_trans" type="SimpleTransmission">
+<transmission name="gripper_trans" type="SimpleTransmission">
   <type>transmission_interface/SimpleTransmission</type>
   <actuator name="gripper_motor">
    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
    <mechanicalReduction>1</mechanicalReduction>
   </actuator>
   <joint name="gripper_joint">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-  </joint>
-</transmission>
-
-<transmission name="l_finger_2_joint_trans" type="SimpleTransmission">
-  <type>transmission_interface/SimpleTransmission</type>
-  <actuator name="l_finger_2_motor">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-   <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-  <joint name="l_finger_2_joint">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-  </joint>
-</transmission>
-
-<transmission name="l_finger_passive_joint_trans" type="SimpleTransmission">
-  <type>transmission_interface/SimpleTransmission</type>
-  <actuator name="l_finger_passive_motor">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-   <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-  <joint name="l_finger_passive_joint">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-  </joint>
-</transmission>
-
-<transmission name="r_finger_1_joint_trans" type="SimpleTransmission">
-  <type>transmission_interface/SimpleTransmission</type>
-  <actuator name="r_finger_1_motor">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-   <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-  <joint name="r_finger_1_joint">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-  </joint>
-</transmission>
-
-
-<transmission name="r_finger_2_joint_trans" type="SimpleTransmission">
-  <type>transmission_interface/SimpleTransmission</type>
-  <actuator name="r_finger_2_motor">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-   <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-  <joint name="r_finger_2_joint">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-  </joint>
-</transmission>
-
-<transmission name="r_finger_passive_joint_trans" type="SimpleTransmission">
-  <type>transmission_interface/SimpleTransmission</type>
-  <actuator name="r_finger_passive_motor">
-   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
-   <mechanicalReduction>1</mechanicalReduction>
-  </actuator>
-  <joint name="r_finger_passive_joint">
    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
   </joint>
 </transmission>

@@ -6,7 +6,7 @@ arm_controller:
        - bottom_wrist_joint
        - elbow_joint
        - top_wrist_joint
-       - r_finger_1_joint
+       - gripper_joint
     constraints:
       goal_time: 0.6
       stopped_velocity_tolerance: 0.05
@@ -24,4 +24,5 @@ arm_controller:
       bottom_wrist_joint: {p: 1000.0, i: 100.0, d: 10.0}
       elbow_joint: {p: 1000.0, i: 100.0, d: 10.0}
       top_wrist_joint: {p: 100.0, i: 0.0, d: 0.0}
-      r_finger_1_joint: {p: 1000.0, i: 100.0, d: 10.0}
+      gripper_joint: {p: 5, i: 0, d: 0}
+
