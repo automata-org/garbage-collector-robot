@@ -14,6 +14,7 @@ class AbstractActivityManager(rosnode.GenericROSNode):
         super().__init__(name)
         #self.rosnode(name) #why?
         self.state = State.NONE
+        self.substate = True
 
     def _do_idle (self):
         raise Exception("Not Implemented idle")

@@ -12,5 +12,6 @@ catkin_package()
 
 catkin_install_python(PROGRAMS
   test/activity_managers_test.py
+  test/manipulator_test.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )

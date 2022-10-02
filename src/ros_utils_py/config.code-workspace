@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../../iot-device-simulator/iotsim/config"
+		},
+		{
+			"path": "../../../catkin_ws"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {}
+}
