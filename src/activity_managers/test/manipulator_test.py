@@ -39,7 +39,29 @@ class Manipulator(Manager.AbstractActivityManager):
     
 def main():
     manager=Manipulator('statetest')
-    manager.run(20)
+    #manager.run(20)
+    manager._do_running()
+    input_state_string = input()
+    #print(manager.state)
+    #print(input_state_string == manager.state)
+    if str(input_state_string) == str(manager.state):
+        if manager.state == "State.IDLE":
+            manager._do_idle()
+        elif manager.state == "State.RUNNING":
+            manager._do_running()
+        elif manager.state == "State.DONE":
+            manager._do_done()
+        elif manager.state == "State.ERROR":
+            manager._do_error()
+            print(manager.substate)
+        else:
+            manager._do_none()
+    else:
+        manager._do_error()
+        manager.substate = False
+        print(manager.substate)
+
+
 
 if __name__ == "__main__":
     try:
