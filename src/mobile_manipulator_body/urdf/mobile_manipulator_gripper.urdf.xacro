@@ -2,6 +2,7 @@
 <robot name="mobile_manipulator" xmlns:xacro="http://ros.org/wiki/xacro">
 <!--<robot name="mobile_manipulator">-->
 <xacro:include filename="$(find rg2_description)/urdf/rg2_rev2.urdf.xacro" />
+<xacro:include filename="$(find mobile_manipulator_body)/urdf/lidar.xacro" />
 
 <!--################################# BASE #####################################-->
   <link name="base_link">
@@ -194,6 +195,11 @@
     </collision>
   </link>
 
+ <joint name="lidarGlue" type="fixed">
+    <parent link="base_link"/>
+    <child link="laz_base"/>
+    <origin xyz="0.325 0 0" rpy = "0 ${pi/2} 0"/>
+  </joint>
 
 <joint name="front_left_wheel_joint" type="continuous">
     <axis xyz="0 1 0"/>
