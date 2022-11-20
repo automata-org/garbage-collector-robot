@@ -150,7 +150,7 @@
                      izz="0.000025" />
         </inertial>
     </link>
-    <!-- Jari Kanan -->
+    
     <joint name="r_finger_1_joint" type="revolute">
         <parent link="hand_link"/>
         <child link="r_moment_arm_link"/>
