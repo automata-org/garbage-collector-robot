@@ -197,8 +197,8 @@
 
  <joint name="lidarGlue" type="fixed">
     <parent link="base_link"/>
-    <child link="laz_base"/>
-    <origin xyz="0.325 0 0" rpy = "0 ${pi/2} 0"/>
+    <child link="laz_rot"/>
+    <origin xyz="0.3 0.0 0.2" rpy = "0 0 0"/>
   </joint>
 
 <joint name="front_left_wheel_joint" type="continuous">
